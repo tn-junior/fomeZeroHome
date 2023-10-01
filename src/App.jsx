@@ -1,8 +1,12 @@
-import TodoList from './TodoList'
+
+import Header from './header'
 import React from 'react'
+
 function App() {
   return (
-    <TodoList />
+    <div>
+    <Header />
+    </div>
   )
 }
 export default App
