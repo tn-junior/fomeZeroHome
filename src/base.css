@@ -2,7 +2,7 @@
   font-family: 'trip_sansregular';
   src: url('trip-sans-webfont.woff2') format('woff2'),
        url('trip-sans-webfont.woff') format('woff');
-  font-weight: normal;
+  font-weight: bold;
   font-style: normal;
 
 }
