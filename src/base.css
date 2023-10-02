@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'trip_sansregular';
+  src: url('trip-sans-webfont.woff2') format('woff2'),
+       url('trip-sans-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'trip_sansultra';
+  src: url('trip-sans-ultra-webfont.woff2') format('woff2'),
+       url('trip-sans-ultra-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'trip_sansbold';
+  src: url('trip-sans-bold-webfont.woff2') format('woff2'),
+       url('trip-sans-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'trip_sansbold';
+  src: url('trip-sans-bold-webfont.woff2') format('woff2'),
+       url('trip-sans-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
