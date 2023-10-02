@@ -1,23 +1,28 @@
 import React from 'react';
 import { Flex, Box, Heading, Spacer, Button, useDisclosure, Collapse } from '@chakra-ui/react';
 import MobileMenu from './MobileMenu';
-import { Search2Icon, PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
-import { IconButton, } from '@chakra-ui/react'
-
+import { Search2Icon,  } from '@chakra-ui/icons'
+import { IconButton,Image } from '@chakra-ui/react'
 
  function header() {
   const { isOpen, onToggle } = useDisclosure();
   return (
-    <Flex as="header" align="center" justify="space-between" p={4} bg="teal.500" color="white">
+    <Flex as="header" align="center" justify-="space-between" p={2} bg="teal.500" color="white">
     <Box>
       <Heading as="h1" size="lg">
-        Logo
+      <Image  width='2.5em' src='https://i.postimg.cc/FYQ9q3fP/logo-Circulo.png' alt='Dan Abramov' />
       </Heading>
+    </Box>
+
+    <Box >
+    <Button colorScheme="" mr={4}>
+      <IconButton wd aria-label='Search database' icon={<Search2Icon />} />
+    </Button>  
     </Box>
 
     <Spacer />
     <Box display={{ base: 'none', md: 'block' }}>
-    <IconButton aria-label='Search database' icon={<Search2Icon />} />
+    
       <Button colorScheme="teal" mr={4}>
         Início
       </Button>
