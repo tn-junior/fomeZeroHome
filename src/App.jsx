@@ -1,5 +1,5 @@
 import Cadastro from './Cadastro'
-import Header from './header'
+import Header from './Header'
 import React from 'react'
 import { ChakraProvider, CSSReset, extendTheme } from '@chakra-ui/react';
 import './fonts.css'
