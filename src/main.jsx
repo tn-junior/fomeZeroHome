@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { ChakraProvider } from '@chakra-ui/react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import NotFound from './NotFound.Jsx';
+import NotFound from './NotFound.jsx';
 import Cadastro from './Cadastro.jsx'
 
 
