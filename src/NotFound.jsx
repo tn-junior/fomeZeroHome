@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // NotFound.jsx
 import React from 'react';
 
