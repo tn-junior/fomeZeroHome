@@ -29,7 +29,7 @@ import { RiHome3Line } from "react-icons/ri";
     <Input
           borderColor={isSearchFocused ? 'black' : 'black'}
           borderWidth={1.6}
-          _placeholder={{ opacity: 0.5, color: 'black' }}
+          _placeholder={{ opacity: 0.6, color: 'black' }}
           _focus={{ borderColor: 'black', boxShadow:'none' }}
           _hover={{ borderColor: 'black' }}
           onFocus={handleSearchFocus}
