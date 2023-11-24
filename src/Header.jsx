@@ -1,35 +1,60 @@
 import React from 'react';
-import { Flex, Box, Heading, Spacer, Button, useDisclosure, Collapse } from '@chakra-ui/react';
+import { Flex, Box, Input, Button, useDisclosure, Collapse,  } from '@chakra-ui/react';
 import MobileMenu from './MobileMenu';
-import { Search2Icon,  } from '@chakra-ui/icons'
-import { IconButton,Image } from '@chakra-ui/react'
+import { Search2Icon, EmailIcon   } from '@chakra-ui/icons'
+import { IconButton } from '@chakra-ui/react'
+import { RiHome3Line } from "react-icons/ri";
 
  function header() {
   const { isOpen, onToggle } = useDisclosure();
+  const [isSearchFocused, setIsSearchFocused] = React.useState(false);
+
+  const handleSearchFocus = () => {
+    setIsSearchFocused(true);
+  };
+
+  const handleSearchBlur = () => {
+    setIsSearchFocused(false);
+  };
   return (
-    <Flex as="header" align="center" justify-="space-between" p={2} bg="teal.500" color="white">
-    <Box>
-      <Heading as="h1" size="lg">
-      <Image  width='2.5em' src='https://i.postimg.cc/FYQ9q3fP/logo-Circulo.png' alt='Dan Abramov' />
-      </Heading>
+    <Flex as="header" align="center" justifyContent="space-between" p={2} bg="#F6AD55" color="white">
+    <Box >
+    <Button ml={2} p={2} _hover={{ bg: '#ED8936' }} h={12}  colorScheme="" mr={4}>
+      <IconButton _hover={{ bg: 'none' }} h={8}  bg = "none" icon as={RiHome3Line} />
+    </Button>  
     </Box>
 
     <Box >
     <Button colorScheme="" mr={4}>
-      <IconButton wd aria-label='Search database' icon={<Search2Icon />} />
+    <Input
+          borderColor={isSearchFocused ? 'black' : 'black'}
+          borderWidth={1.6}
+          _placeholder={{ opacity: 0.5, color: 'black' }}
+          _focus={{ borderColor: 'black', boxShadow:'none' }}
+          _hover={{ borderColor: 'black' }}
+          onFocus={handleSearchFocus}
+          borderRadius={4}
+          color="black"
+          onBlur={handleSearchBlur}
+          placeholder="Pesquisar..."
+          w={500}
+          mr={2}  
+          
+        />
+      <IconButton  _hover={{ bg: '#ED8936' }} bg = "none"  wd aria-label='Search database' icon={<Search2Icon />} />
     </Button>  
     </Box>
 
-    <Spacer />
+   
     <Box display={{ base: 'none', md: 'block' }}>
     
-      <Button colorScheme="teal" mr={4}>
+      <Button color='black' _hover={{ bg: '#ED8936' }} bg = "none" colorScheme="teal" mr={4}>
         Início
       </Button>
-      <Button colorScheme="teal" mr={4}>
+      <Button color = 'black' _hover={{ bg: '#ED8936' }}  bg = "none" colorScheme="teal" mr={4}>
         Sobre
       </Button>
-      <Button colorScheme="teal" mr={4}>
+      <Button color = 'black' _hover={{ bg: '#ED8936' }} leftIcon={<EmailIcon />} align="center" bg = "none" colorScheme="teal" mr={4}>
         Contato
       </Button>
     </Box>
