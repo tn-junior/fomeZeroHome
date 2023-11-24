@@ -1,8 +1,8 @@
-import Cadastro from './Cadastro'
-import Header from './header'
-import React from 'react'
+import Header from './Header'
+
 import { ChakraProvider, CSSReset, extendTheme } from '@chakra-ui/react';
 import './fonts.css'
+import { Outlet } from 'react-router-dom'
 
 const theme = extendTheme({
   
@@ -14,7 +14,7 @@ function App() {
       <CSSReset />
     <div>
     <Header />
-    <Cadastro />
+    <Outlet/>
     </div>
     </ChakraProvider>
   )
