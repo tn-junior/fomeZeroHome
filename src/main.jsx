@@ -4,7 +4,7 @@ import App from './App.jsx'
 import { ChakraProvider } from '@chakra-ui/react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFound from './NotFound.jsx';
-import Cadastro from './Cadastro.jsx'
+import Home from './Cadastro.jsx'
 
 
 
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Cadastro/>,
+        element: <Home/>,
       },
       
       // nested routes - identificador unico

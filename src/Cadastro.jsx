@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -7,7 +7,7 @@ import {
   FormLabel,
   Input,
   VStack,
-  HStack, // Adicionado HStack para agrupar botões horizontalmente
+  HStack,
 } from '@chakra-ui/react';
 import CpfInput from './CpfInput';
 import './base.css';
@@ -19,6 +19,17 @@ function Home() {
   const [cpf, setCpf] = useState('');
   const [cadastroAtivo, setCadastroAtivo] = useState(true);
   const [loginAtivo, setLoginAtivo] = useState(false);
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('userEmail');
+    const storedNome = localStorage.getItem('userName');
+
+    if (storedEmail && storedNome) {
+      setEmail(storedEmail);
+      setNome(storedNome);
+      setCadastroAtivo(false);
+    }
+  }, []);
 
   const handleNomeChange = (e) => {
     setNome(e.target.value);
@@ -36,10 +47,14 @@ function Home() {
     setCpf(formattedCpf);
   };
 
-  const handleSubmit = (e) => {
+  const handleCadastroSubmit = (e) => {
     e.preventDefault();
     console.log(`Nome: ${nome}, Email: ${email}, CPF: ${cpf}`);
     setCadastroAtivo(false);
+
+    // Salva os dados no localStorage
+    localStorage.setItem('userEmail', email);
+    localStorage.setItem('userName', nome);
   };
 
   const handleLoginClick = () => {
@@ -49,12 +64,18 @@ function Home() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     console.log(`Email: ${email}, Senha: ${senha}`);
+    setCadastroAtivo(false); // Fechar a caixa de cadastro
+    setLoginAtivo(false); // Fechar a caixa de login
+
+    // Salva os dados no localStorage
+    localStorage.setItem('userEmail', email);
+    localStorage.setItem('userName', 'Nome do Usuário'); // Substitua pelo nome real do usuário, se aplicável
   };
 
   return (
     <Box p={4}>
-      {(cadastroAtivo || (cadastroAtivo && loginAtivo)) && <Box className="fundo-escuro" />}
-      
+      {(cadastroAtivo || loginAtivo) && <Box className="fundo-escuro" />}
+
       {cadastroAtivo && !loginAtivo && (
         <Container
           maxW="md"
@@ -67,7 +88,7 @@ function Home() {
           <Box textAlign="center" mb={4}>
             <h2>Cadastro</h2>
           </Box>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleCadastroSubmit}>
             <VStack spacing={4}>
               <FormControl>
                 <FormLabel>Nome:</FormLabel>
@@ -93,7 +114,6 @@ function Home() {
                 <FormLabel>CPF:</FormLabel>
                 <CpfInput cpf={cpf} onChange={handleCpfChange} />
               </FormControl>
-              {/* Usando HStack para alinhar os botões lado a lado */}
               <HStack spacing={4}>
                 <Button type="submit" colorScheme="blue">
                   Cadastrar
@@ -146,7 +166,7 @@ function Home() {
               </Button>
             </VStack>
           </form>
-          <Button mt={4} onClick={handleLoginClick}>
+          <Button mt={4} onClick={() => setLoginAtivo(false)}>
             Voltar
           </Button>
         </Container>

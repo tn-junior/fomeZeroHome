@@ -1,4 +1,5 @@
 import Header from './Header'
+import MainContent from './MainContent';
 import { ChakraProvider, CSSReset, extendTheme } from '@chakra-ui/react';
 import './fonts.css'
 import { Outlet } from 'react-router-dom'
@@ -13,6 +14,7 @@ function App() {
       <CSSReset />
     <div>
     <Header />
+    <MainContent/>
     <Outlet/>
     </div>
     </ChakraProvider>
