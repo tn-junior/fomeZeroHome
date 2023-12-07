@@ -8,9 +8,9 @@ function MainContent() {
   const [necessidades, setNecessidades] = useState('');
   const [meta, setMeta] = useState('');
   const [eventos, setEventos] = useState([]);
+  const [mapaAtivo, setMapaAtivo] = useState(null);
 
   useEffect(() => {
-    // Recupera os eventos do localStorage ao carregar a página
     const eventosSalvos = JSON.parse(localStorage.getItem('eventos')) || [];
     setEventos(eventosSalvos);
   }, []);
@@ -35,6 +35,14 @@ function MainContent() {
     setMeta(e.target.value);
   };
 
+  const handleMouseEnter = (index) => {
+    setMapaAtivo(index);
+  };
+
+  const handleMouseLeave = () => {
+    setMapaAtivo(null);
+  };
+
   const handlePostSubmit = (e) => {
     e.preventDefault();
     const novoPost = {
@@ -45,14 +53,12 @@ function MainContent() {
       meta,
     };
 
-    // Adiciona o novo evento à lista de eventos
+   
     const novosEventos = [...eventos, novoPost];
     setEventos(novosEventos);
-
-    // Salva os eventos no localStorage
+  
     localStorage.setItem('eventos', JSON.stringify(novosEventos));
 
-    // Limpa os campos após a submissão
     setData('');
     setHora('');
     setLocalizacao('');
@@ -61,11 +67,9 @@ function MainContent() {
   };
 
   return (
-    <HStack marginLeft={3} spacing={4} align="start">
-      {/* Outros componentes ou seções do site podem ser adicionados aqui */}
-
-      {/* Seção de Postagem de Eventos */}
-      <Box alignContent={'center'}>
+    <HStack spacing={4} align="start">
+      
+      <Box marginLeft={3} marginTop={12} marginRight={10} alignContent={'center'}>
         <form onSubmit={handlePostSubmit}>
           <VStack spacing={4} align="start">
             <FormControl>
@@ -78,11 +82,23 @@ function MainContent() {
             </FormControl>
             <FormControl>
               <FormLabel>Localização:</FormLabel>
-              <Input type="text" value={localizacao} onChange={handleLocalizacaoChange} placeholder="Informe o local" isRequired />
+              <Input
+                type="text"
+                value={localizacao}
+                onChange={handleLocalizacaoChange}
+                placeholder="Informe o local"
+                isRequired
+              />
             </FormControl>
             <FormControl>
               <FormLabel>Necessidades:</FormLabel>
-              <Input type="text" value={necessidades} onChange={handleNecessidadesChange} placeholder="Informe as necessidades" isRequired />
+              <Input
+                type="text"
+                value={necessidades}
+                onChange={handleNecessidadesChange}
+                placeholder="Informe as necessidades"
+                isRequired
+              />
             </FormControl>
             <FormControl>
               <FormLabel>Meta de Arrecadação:</FormLabel>
@@ -95,18 +111,29 @@ function MainContent() {
         </form>
       </Box>
 
-      {/* Seção Central de Exibição de Eventos */}
-      <VStack spacing={4}>
-        <Text fontSize="xl" fontWeight="bold" mb={4}>
-          Últimos Eventos
-        </Text>
+      
+      <VStack marginTop={5} spacing={4}>
         {eventos.map((evento, index) => (
-          <Box key={index} p={4} borderWidth="1px" borderRadius="md">
+          <Box
+            key={index}
+            p={4}
+            borderWidth="1px"
+            borderColor='#F6AD55'
+            borderRadius="md"
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+          >
             <Text>Data: {evento.data}</Text>
             <Text>Hora: {evento.hora}</Text>
             <Text>Localização: {evento.localizacao}</Text>
             <Text>Necessidades: {evento.necessidades}</Text>
             <Text>Meta de Arrecadação: {evento.meta}</Text>
+            {mapaAtivo === index && (
+              <img
+                src={`https://www.mapquestapi.com/staticmap/v5/map?key=hlsfCQoKWhZXYpLHl7z8k3JEkrEC06Fy&center=${evento.localizacao},MA&size=200,200,CA&zoom=14`}
+                alt="Mapa do Local"
+              />
+            )}
           </Box>
         ))}
       </VStack>

@@ -47,7 +47,7 @@
 
 }
 
-/* Estilo do fundo escuro */
+
 .fundo-escuro {
   position: fixed;
   top: 0;
@@ -58,7 +58,7 @@
   z-index: 1;
 }
 
-/* Estilo do componente de cadastro centralizado */
+
 .cadastro-centralizado {
   position: fixed;
   top: 50%;

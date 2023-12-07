@@ -64,12 +64,12 @@ function Home() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     console.log(`Email: ${email}, Senha: ${senha}`);
-    setCadastroAtivo(false); // Fechar a caixa de cadastro
-    setLoginAtivo(false); // Fechar a caixa de login
+    setCadastroAtivo(false); 
+    setLoginAtivo(false); 
 
-    // Salva os dados no localStorage
+   
     localStorage.setItem('userEmail', email);
-    localStorage.setItem('userName', 'Nome do Usuário'); // Substitua pelo nome real do usuário, se aplicável
+    localStorage.setItem('userName', 'Nome do Usuário'); 
   };
 
   return (
@@ -169,9 +169,12 @@ function Home() {
           <Button mt={4} onClick={() => setLoginAtivo(false)}>
             Voltar
           </Button>
+         
         </Container>
+        
       )}
     </Box>
+    
   );
 }
 

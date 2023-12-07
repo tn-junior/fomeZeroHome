@@ -20,7 +20,6 @@ const EventForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ data, hora, localizacao, necessidades, meta });
-    // Limpar os campos após o envio, se necessário
     setData('');
     setHora('');
     setLocalizacao('');

@@ -54,7 +54,7 @@ import { RiHome3Line } from "react-icons/ri";
       <Button color = 'black' _hover={{ bg: '#ED8936' }}  bg = "none" colorScheme="teal" mr={4}>
         Sobre
       </Button>
-      <Button color = 'black' _hover={{ bg: '#ED8936' }} leftIcon={<EmailIcon />} align="center" bg = "none" colorScheme="teal" mr={4}>
+      <Button color = 'black' _hover={{ bg: '#ED8936' }} leftIcon={<EmailIcon />} align="center" bg = "none" colorScheme="teal" mr={1}>
         Contato
       </Button>
     </Box>
@@ -68,7 +68,11 @@ import { RiHome3Line } from "react-icons/ri";
     <Collapse in={isOpen}>
       <MobileMenu />
     </Collapse>
+    <Box w="80px" position="fixed" top="16" right="0" h="100%" bg="#F6AD55">
+        <p>Conteúdo da Sidebar</p>
+      </Box>
   </Flex>
+  
 );
 }
 export default header;
