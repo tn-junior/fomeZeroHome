@@ -5,7 +5,7 @@ import { Search2Icon, EmailIcon   } from '@chakra-ui/icons'
 import { IconButton } from '@chakra-ui/react'
 import { RiHome3Line } from "react-icons/ri";
 
- function header() {
+ function header( ) {
   const { isOpen, onToggle } = useDisclosure();
   const [isSearchFocused, setIsSearchFocused] = React.useState(false);
 
@@ -17,14 +17,14 @@ import { RiHome3Line } from "react-icons/ri";
     setIsSearchFocused(false);
   };
   return (
-    <Flex as="header" align="center" justifyContent="space-between" p={2} bg="#F6AD55" color="white">
-    <Box >
+    <Flex top="16" as="header" align="center" justifyContent="space-between" p={2} bg="#F6AD55" color="white">
+    <Box  >
     <Button ml={2} p={2} _hover={{ bg: '#ED8936' }} h={12}  colorScheme="" mr={4}>
       <IconButton _hover={{ bg: 'none' }} h={8}  bg = "none" icon as={RiHome3Line} />
     </Button>  
     </Box>
 
-    <Box >
+    <Box zIndex={2} >
     <Button colorScheme="" mr={4}>
     <Input
           borderColor={isSearchFocused ? 'black' : 'black'}
@@ -46,7 +46,7 @@ import { RiHome3Line } from "react-icons/ri";
     </Box>
 
    
-    <Box display={{ base: 'none', md: 'block' }}>
+    <Box marginRight={20} display={{ base: 'none', md: 'block' }}>
     
       <Button color='black' _hover={{ bg: '#ED8936' }} bg = "none" colorScheme="teal" mr={4}>
         Início
@@ -57,7 +57,7 @@ import { RiHome3Line } from "react-icons/ri";
       <Button color = 'black' _hover={{ bg: '#ED8936' }} leftIcon={<EmailIcon />} align="center" bg = "none" colorScheme="teal" mr={1}>
         Contato
       </Button>
-    </Box>
+    </Box >
 
     <Box display={{ base: 'block', md: 'none' }}>
       <Button onClick={onToggle} colorScheme="teal">
@@ -68,8 +68,8 @@ import { RiHome3Line } from "react-icons/ri";
     <Collapse in={isOpen}>
       <MobileMenu />
     </Collapse>
-    <Box w="80px" position="fixed" top="16" right="0" h="100%" bg="#F6AD55">
-        <p>Conteúdo da Sidebar</p>
+    <Box  w="80px" position="fixed" top="0" right="0" h="100%" bg="#F6AD55">
+        <p >Conteúdo da Sidebar</p>
       </Box>
   </Flex>
   
