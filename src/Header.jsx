@@ -4,6 +4,7 @@ import MobileMenu from './MobileMenu';
 import { Search2Icon, EmailIcon   } from '@chakra-ui/icons'
 import { IconButton } from '@chakra-ui/react'
 import { RiHome3Line } from "react-icons/ri";
+import Sidebar from './Sidebar';
 
  function header( ) {
   const { isOpen, onToggle } = useDisclosure();
@@ -68,9 +69,7 @@ import { RiHome3Line } from "react-icons/ri";
     <Collapse in={isOpen}>
       <MobileMenu />
     </Collapse>
-    <Box  w="80px" position="fixed" top="0" right="0" h="100%" bg="#F6AD55">
-        <p >Conteúdo da Sidebar</p>
-      </Box>
+      <Sidebar/>
   </Flex>
   
 );
