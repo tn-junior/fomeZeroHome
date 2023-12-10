@@ -52,7 +52,7 @@ function Home() {
     console.log(`Nome: ${nome}, Email: ${email}, CPF: ${cpf}`);
     setCadastroAtivo(false);
 
-    // Salva os dados no localStorage
+   
     localStorage.setItem('userEmail', email);
     localStorage.setItem('userName', nome);
   };

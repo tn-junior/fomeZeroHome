@@ -8,11 +8,11 @@ import { IoIosInformationCircle } from "react-icons/io";
 
 function Sidebar() {
   const [interacao1, setInteracao1] = useState(false);
-  const [interacao2, setInteracao2] = useState(0); // Inicializa a contagem de curtidas
+  const [interacao2, setInteracao2] = useState(0); 
   const [interacao3, setInteracao3] = useState(false);
 
   useEffect(() => {
-    // Carrega a contagem de curtidas do localStorage ao carregar o componente
+   
     const curtidasSalvas = JSON.parse(localStorage.getItem('curtidas')) || 0;
     setInteracao2(curtidasSalvas);
   }, []);
@@ -29,10 +29,10 @@ function Sidebar() {
 
   const handleInteracao2 = () => {
     setInteracao1(false);
-    // Incrementa a contagem de curtidas
+    
     const novaContagem = interacao2 + 1;
     setInteracao2(novaContagem);
-    // Salva a contagem de curtidas no localStorage
+    
     localStorage.setItem('curtidas', JSON.stringify(novaContagem));
     setInteracao3(false);
   };
@@ -40,7 +40,7 @@ function Sidebar() {
   const handleInteracao3 = () => {
     setInteracao1(false);
     setInteracao2(0);
-    localStorage.removeItem('curtidas'); // Remove as curtidas do localStorage
+    localStorage.removeItem('curtidas'); 
     setInteracao3(!interacao3);
   };
 
